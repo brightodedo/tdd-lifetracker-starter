@@ -1,8 +1,14 @@
 import * as React from 'react'
 import './NavLinks.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
-export default function NavLinks(){
+export default function NavLinks({setAppState, appState}){
+    const navigate = useNavigate()
+    const handleLogoutOnClick = (event) => {
+        event.preventDefault()
+        setAppState(null)
+        navigate('/')
+    }
     return (
         <div className="nav-links">
             <ul className='links'>
@@ -10,9 +16,9 @@ export default function NavLinks(){
             <li><Link to='/nutrition/*'>Nutrition</Link></li>
             <li><Link to='/'>Exercise</Link></li>
             <li><Link to='/'>sleep</Link></li>
-            <li><Link to='/login'>login</Link></li>
-            <li><Link to='register'>signup</Link></li>
-            <li><Link to='/'>Logout</Link></li>
+            {appState ? <></> : <li><Link to='/login'>login</Link></li>}
+            {appState ? <></>  : <li><Link to='register'>signup</Link></li>}
+            {!appState ? <></> : <li><Link to='/login' onClick={handleLogoutOnClick}>Logout</Link></li>}
             </ul>
         </div>
     )

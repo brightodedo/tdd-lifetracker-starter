@@ -1,0 +1,43 @@
+.activity-feed{
+    display: flex;
+    justify-content: center;
+    min-width: 85%;
+}
+.working-area{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: 85%;
+}
+.handy{
+    color: aliceblue;
+    flex: 1;
+}
+
+.randy{
+    padding: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex: 1;
+    margin: 25px 0px;
+}
+
+.randy button{
+    background-color: orange;
+    color: aliceblue;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+}
+
+.randy button:hover{
+    transform: scale(1.1) translateY(-7px);
+    cursor: pointer;
+    box-shadow: 0px 0px 10px grey;
+    background-color: green;
+    color: aliceblue;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+}

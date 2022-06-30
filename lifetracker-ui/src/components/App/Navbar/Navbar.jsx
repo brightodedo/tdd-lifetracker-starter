@@ -4,12 +4,12 @@ import NavLinks from '../NavLinks/NavLinks'
 import './Navbar.css'
 
 
-export default function Navbar(){
+export default function Navbar({setAppState, appState}){
     return(
         <div className='Navbar'>
             <div className="content">
                 <Logo />
-                <NavLinks />
+                <NavLinks setAppState={setAppState} appState={appState}/>
             </div> 
         </div>
     )

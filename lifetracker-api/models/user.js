@@ -23,18 +23,23 @@ class User{
         //check if user exists
         const existingUser = await User.fetchUserByEmail(credentials.email)
 
-        //if user does not exist throw an error
-        if(!existingUser){
-            throw new UnauthorizedError(`Email or Password Invalid`)
+        //if user exists compare passwords
+        if(existingUser){
+            const isValid = await bcrypt.compare(credentials.password, existingUser.password)
+            if(isValid) {
+                //return existingUser
+                return {
+                    "id" : existingUser.id,
+                    "username" : existingUser.username,
+                    "email": existingUser.email,
+                    "first_name": existingUser.first_name,
+                    "last_name": existingUser.last_name
+                }
+            }
         }
-
-        //return existingUser
-        return {
-            "id" : existingUser.id,
-            "email": existingUser.email,
-            "first_name": existingUser.first_name,
-            "last_name": existingUser.last_name
-        }
+        //if password is correct
+        throw new UnauthorizedError(`Email or Password Invalid`)
+        
     }
 
     static async register(credentials){
@@ -69,6 +74,8 @@ class User{
             throw new BadRequestError(`Username taken : ${credentials.username}`)
         }
 
+        const hashedPassword = await bcrypt.hash(credentials.password, parseInt(BCRYPT_WORK_FACTOR))
+
         const result = await db.query(`
         INSERT INTO users(
             username,
@@ -83,7 +90,7 @@ class User{
             $4,
             $5
         ) RETURNING id, username, first_name, last_name, email;
-        `, [credentials.username, credentials.password, credentials.first_name, credentials.last_name, credentials.email])
+        `, [credentials.username, hashedPassword, credentials.first_name, credentials.last_name, credentials.email])
 
         return result.rows[0]
 

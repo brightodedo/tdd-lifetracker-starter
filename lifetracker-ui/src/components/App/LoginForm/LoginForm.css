@@ -43,6 +43,11 @@
     transform: scale(1.2) translateY(-10px);
 }
 
+.register-btn button:active{
+    transition: .001s;
+    background-color: green;
+}
+
 .restore{
     color: orange;
     text-decoration: none;

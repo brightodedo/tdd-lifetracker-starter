@@ -1,13 +1,20 @@
 import * as React from 'react'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import LoginForm from '../LoginForm/LoginForm'
 import './LoginPage.css'
 
 
-export default function LoginPage(){
+export default function LoginPage({setAppState, appState}){
+    const navigate = useNavigate()
+    React.useEffect(() => {
+        if(appState){
+            navigate("/activity")
+        }
+    }, [appState]) 
+
     return(
         <div className="login-page">
-            <LoginForm />
+            <LoginForm setAppState={setAppState}/>
         </div>
     )
 }
