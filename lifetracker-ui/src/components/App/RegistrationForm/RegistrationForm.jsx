@@ -1,19 +1,26 @@
+import axios from 'axios'
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
 import './RegistrationForm.css'
+import { useAuthContext } from '../../../../contexts/auth'
+import ApiClient from '../../../directory/apiClient'
+
 
 export default function RegistrationForm(){
+    const {setUser} = useAuthContext()
+    const navigate = useNavigate()
     const [registerForm, setRegisterForm] = React.useState({email : "", 
                                                             username: "",
-                                                            first_name : "",
+                                                                first_name : "",
                                                             last_name : "", 
                                                             password : "",
                                                             passwordConfirm : ""})
     const [registerError, setRegisterError] = React.useState({
         "email" : false,
-        "password" : false
+        "password" : false,
+        "register" : ""
     })
-
+    const [registerLoading, setRegisterLoading] = React.useState(false)
     const handleRegisterOnChange = (event) => {
         let value = event.target.value
         let field = event.target.name
@@ -47,9 +54,46 @@ export default function RegistrationForm(){
 
         setRegisterForm({...registerForm, [field] : value})
     }
+
+    const handleRegisterOnSubmit = async (event) => {
+        event.preventDefault()
+        setRegisterLoading(true)
+
+
+        if(registerError.email){
+            setRegisterError({...registerError, "register" : "Invalid Email"})
+            return
+        }
+
+        if(registerError.password){
+            setRegisterError({...registerError, "register" : "Passwords do not match"})
+            return
+        }
+
+        if(!registerForm.password || !registerForm.first_name || !registerForm.last_name || !registerForm.username){
+            setRegisterError({...registerError, "register" : "complete all fields"})
+            setRegisterLoading(false)
+            return
+        }
+        
+        const {data, error} = await ApiClient.signupUser(registerForm)
+        if(error) setRegisterError({...registerError, "register" : error})
+        if(data?.user){
+            setUser(data.user)
+            ApiClient.setToken(data.token)
+        }
+
+        setRegisterLoading(false)
+
+    }
+
     return(
         <div className="registration-form">
             <div className="redner">
+                <div className="tops">
+                <h1 className="register">Sign Up</h1>
+                {registerError.register ? <p className='error'>{registerError.register}</p> : <></>}
+                </div>
                 <div className="card">
                     <div className="email">
                         <label htmlFor="email">Email</label>
@@ -80,7 +124,7 @@ export default function RegistrationForm(){
                         <input type="password" name="passwordConfirm" className="form-input" value={registerForm.passwordConfirm} onChange={handleRegisterOnChange} placeholder="password"/>
                     </div>
                     <div className="register-btn">
-                        <button>SignUp</button>
+                        <button onClick={handleRegisterOnSubmit}>SignUp</button>
                     </div>
                 </div>
                 <div className="redirect">

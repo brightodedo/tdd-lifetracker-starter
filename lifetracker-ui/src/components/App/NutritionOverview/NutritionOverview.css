@@ -1,0 +1,35 @@
+.nutrition-overview{
+    width: 100%;
+}
+
+.overview-header{
+    display: flex;
+    flex: row;
+    margin: 20px;
+    justify-content: space-between;
+}
+
+.overview-text h1{
+    font-size: 36px;
+}
+.overview-button{
+    display: flex;
+    justify-content: center;
+}
+.overview-button button{
+    margin: auto;
+    color: orange;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid orange;
+    transition: .3s;
+}
+
+.overview-button button:hover{
+    transform: scale(1.1) translateY(-7px);
+    color: green;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid green;
+    cursor: pointer;
+}

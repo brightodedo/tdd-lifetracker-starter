@@ -2,7 +2,10 @@
 const express = require('express')
 const cors = require('cors')
 const morgan = require('morgan')
-const router = require('./routes/auth')
+const authRouter = require('./routes/auth')
+const nutritionRouter = require('./routes/nutrition')
+const security = require('./middleware/security')
+const {NotFoundError} = require('./utils/errors')
 
 //instantiate the app 
 const app = express()
@@ -11,9 +14,11 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(morgan('tiny'))
+app.use(security.extractUserFromJwt)
 
-//mount the router
-app.use('/auth', router)
+//mount the routers
+app.use('/auth', authRouter)
+app.use('/nutrition', nutritionRouter)
 
 //health check route 
 app.get('/', (req, res) => {

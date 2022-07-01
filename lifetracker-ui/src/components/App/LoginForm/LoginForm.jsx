@@ -1,11 +1,16 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './LoginForm.css'
-
+import ApiClient from '../../../directory/apiClient'
+import { useAuthContext } from '../../../../contexts/auth'
 
 export default function LoginForm(){
+    const {setUser} = useAuthContext()
+    const navigate = useNavigate()
     const [loginForm, setLoginForm] = React.useState({email : "", password : ""})
+    const [loginLoading, setLoginLoading] = React.useState(false)
+    const [loginError, setLoginError] = React.useState()
     const [improperEmail, setImproperEmail] = React.useState(false)
 
     const handleOnChange = (event) => {
@@ -21,14 +26,46 @@ export default function LoginForm(){
         setLoginForm({...loginForm, [field] : value})
     }
 
+    const handleLoginOnSubmit = async (event) =>{
+        event.preventDefault()
+        setLoginLoading(true)
+
+        if(!loginForm.email ){
+            setLoginError("Missing Email")
+            setLoginLoading(false)
+            return
+        }
+
+        if(!loginForm.password){
+            setLoginError("Missing password")
+            setLoginLoading(false)
+            return
+        }
+
+        const {data, error}  = await ApiClient.loginUser(loginForm)
+        if(error) setLoginError(error)
+        if(data?.user) {
+            setUser(data.user)
+            ApiClient.setToken(data.token)
+        }
+
+        setLoginLoading(false)
+
+
+    }
+    
     return(
         <div className="login-form">
             <div className="input-window">
+                <div className="tops">
+                    <h1 className="register"> Login </h1>
+                    {loginError ? <p className='error'>{loginError}</p> : <></>}
+                </div>
                 <div className="card">
                     <div className="email">
                         <label htmlFor="email">Email</label>
                         <input type="text" className="form-input" name='email' value={loginForm.email} onChange={handleOnChange} placeholder="jane@doe.com"/>
-                        {improperEmail ? <p className='error'> not valid email </p> : <></>}
+                        {improperEmail ? <p className='error'> Invalid email </p> : <></>}
                     </div>
 
                     <div className="password">
@@ -37,7 +74,7 @@ export default function LoginForm(){
                     </div>
                 
                     <div className="register-btn">
-                        <button className='signin'> Login </button>
+                        <button className='signin' onClick={handleLoginOnSubmit}> Login </button>
                     </div>
                 </div> 
                 <div className="redirect">

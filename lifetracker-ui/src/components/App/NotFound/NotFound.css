@@ -1,0 +1,14 @@
+.notfound{
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+}
+
+.not-found h1{
+    text-align: center;
+    font-size: 115px;
+}
+
+.not-found h3{
+    text-align: center;
+}

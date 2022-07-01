@@ -132,17 +132,17 @@ The components in the `App.jsx` file should render the following components (alo
       - [ ] Export default a new instance of the `ApiClient` class
       - [ ] Add an additional method called `setToken` that accepts a single parameter - `token` and attaches it to the instance.
       - [ ] Create a utility method called `request` that uses `axios` to issue HTTP requests
-      - [ ] Add a `login` method that uses the `request` method to send an HTTP request to the `auth/login` endpoint
+      - [X] Add a `login` method that uses the `request` method to send an HTTP request to the `auth/login` endpoint
       - [ ] Add a `signup` method that uses the `request` method to send an HTTP request to the `auth/register` endpoint
       - [ ] Add a `fetchUserFromToken` method that uses the `request` method to send an HTTP request to the `auth/me` endpoint
       - [ ] **Add as many other methods as needed when making API requests**
 
   - [ ] Create an **`auth`** context:
 
-    - [ ] First, create a `contexts` directory at the root of the project
-    - [ ] Inside it, touch the `contexts/auth.jsx` file
+    - [X] First, create a `contexts` directory at the root of the project
+    - [X] Inside it, touch the `contexts/auth.jsx` file
     - [ ] In that file, define a new `AuthContext` with `React.createContext`
-    - [ ] Use that context to create an `AuthContextProvider` component
+    - [X] Use that context to create an `AuthContextProvider` component
       - [ ] The Provider component should create state variables and updaters needed for `user`, `initialized`, `isProcessing`, and `error`.
       - [ ] It should have a `React.useEffect` hook that fires when the component is mounted to the screen
         - [ ] That hook should check to see if a JWT token exists in local storage under the `lifetracker_token` key
@@ -284,17 +284,17 @@ The components in the `App.jsx` file should render the following components (alo
 
   - [ ] The **`ActivityPage.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `activity-page`
+    - [X] Should render JSX that is wrapped by an element with the `className` of `activity-page`
     - [ ] It should call the `useActivityContext` hook and extract all the necessary data from it.
     - [ ] If the `isProcessing` flag is `true`, it should render the `Loading.jsx` component
     - [ ] If the `isProcessing` flag is `false`, it should render the `ActivityFeed.jsx` component and pass it the appropriate props
 
   - [ ] The **`ActivityFeed.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `activity-feed`
+    - [X] Should render JSX that is wrapped by an element with the `className` of `activity-feed`
     - [ ] Should accept **at least** the following props:
-      - [ ] `totalCaloriesPerDay` - an array of items containing summary data about the total calories consumed per day
-      - [ ] `avgCaloriesPerCategory` - an array of items containing summary data about the average calories consumed per category
+      - [X] `totalCaloriesPerDay` - an array of items containing summary data about the total calories consumed per day
+      - [X] `avgCaloriesPerCategory` - an array of items containing summary data about the average calories consumed per category
       - [ ] Any other
     - [ ] Inside an element with the `className` of `per-category`, it should:
       - [ ] Render the text: `"Average Calories Per Category` inside an `h4` element
@@ -320,76 +320,76 @@ The components in the `App.jsx` file should render the following components (alo
     - [ ] It should render the `label` prop inside an element with the `className` of `stat-label`
     - [ ] It should render the `substat` prop inside an element with the `className` of `secondary-statistic`
 
-  - [ ] The **`nutrition`** context
+  - [X] The **`nutrition`** context
 
-    - [ ] Create a file in the `contexts directory - `/contexts/nutrition.jsx`
-    - [ ] In that file, define a new `NutritionContext` with `React.createContext`
-    - [ ] Use that context to create a `NutritionContextProvider` component
-      - [ ] The `NutritionContextProvider` component should create state variables and updaters needed for `nutritions`, `initialized`, `isLoading`, and `error`.
-      - [ ] It should call the `useAuthContext` hook and check to see if a valid user is logged in.
-      - [ ] It should have a `React.useEffect` hook that fires when the component is mounted to the screen
-        - [ ] That hook should check to see if a user is logged in.
-        - [ ] If a user is logged in...
-          - [ ] Set the `isLoading` state variable to `true`
+    - [X] Create a file in the `contexts directory - `/contexts/nutrition.jsx`
+    - [X] In that file, define a new `NutritionContext` with `React.createContext`
+    - [X] Use that context to create a `NutritionContextProvider` component
+      - [X] The `NutritionContextProvider` component should create state variables and updaters needed for `nutritions`, `initialized`, `isLoading`, and `error`.
+      - [X] It should call the `useAuthContext` hook and check to see if a valid user is logged in.
+      - [X] It should have a `React.useEffect` hook that fires when the component is mounted to the screen
+        - [X] That hook should check to see if a user is logged in.
+        - [X] If a user is logged in...
+          - [X] Set the `isLoading` state variable to `true`
           - [ ] Then, it should make a `GET` request to the `/nutritions` endpoint
-            - [ ] If there is an error with the request, it should set a message as the `error` state variable
-            - [ ] If all goes well:
-              - [ ] It should set the data as the `nutritions` state variable
-          - [ ] Regardless, at the end, set the `isLoading` state variable to `false` and the `initialized` state variable to `true`
-      - [ ] Make sure to pass an object containing all the state variables to the `value` prop of the `NutritionContext.Provider` component
-    - [ ] Create and export a `useNutritionContext` hook that calls the `React.useContext` hook with the newly created `NutritionContext` and returns it.
+            - [X] If there is an error with the request, it should set a message as the `error` state variable
+            - [X] If all goes well:
+              - [X] It should set the data as the `nutritions` state variable
+          - [X] Regardless, at the end, set the `isLoading` state variable to `false` and the `initialized` state variable to `true`
+      - [X] Make sure to pass an object containing all the state variables to the `value` prop of the `NutritionContext.Provider` component
+    - [X] Create and export a `useNutritionContext` hook that calls the `React.useContext` hook with the newly created `NutritionContext` and returns it.
 
-  - [ ] The **`NutritionPage.jsx`** component:
+  - [X] The **`NutritionPage.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-page`
-    - [ ] Should render a nested `Routes` component from `react-router-dom`.
-      - [ ] There should be multiple `Route` components:
-        - [ ] The `/nutrition` route should render the `NutritionOverview.jsx` component
-        - [ ] The `/nutrition/create` route should render the `NutritionNew.jsx` component
-        - [ ] The `/nutrition/id/:nutritionId` should render the `NutritionDetail.jsx` component
-        - [ ] Any other route should render the `NotFound` component
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-page`
+    - [X] Should render a nested `Routes` component from `react-router-dom`.
+      - [X] There should be multiple `Route` components:
+        - [X] The `/nutrition` route should render the `NutritionOverview.jsx` component
+        - [X] The `/nutrition/create` route should render the `NutritionNew.jsx` component
+        - [X] The `/nutrition/id/:nutritionId` should render the `NutritionDetail.jsx` component
+        - [X] Any other route should render the `NotFound` component
 
-  - [ ] The **`NutritionOverview.jsx`** component:
+  - [X] The **`NutritionOverview.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-overview`
-    - [ ] It should call the `useNutritionContext` hook and extract all the necessary data from it.
-      - [ ] If the `error` state variable has a valid string in it, it should render the `error` message inside an element with the `className` of `error`
-      - [ ] If the `isLoading` boolean is `true`, it should render the `Loading.jsx` component
-      - [ ] If the `isLoading` boolean is `false`, it should render the `NutritionFeed.jsx` component and pass it the appropriate props
-    - [ ] Near the top of the component, it should render a `Link` component that directs to the `/nutrition/create` route and contains the text: `"Record Nutrition"`
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-overview`
+    - [X] It should call the `useNutritionContext` hook and extract all the necessary data from it.
+      - [X] If the `error` state variable has a valid string in it, it should render the `error` message inside an element with the `className` of `error`
+      - [X] If the `isLoading` boolean is `true`, it should render the `Loading.jsx` component
+      - [X] If the `isLoading` boolean is `false`, it should render the `NutritionFeed.jsx` component and pass it the appropriate props
+    - [X] Near the top of the component, it should render a `Link` component that directs to the `/nutrition/create` route and contains the text: `"Record Nutrition"`
 
-  - [ ] The **`NutritionFeed.jsx`** component:
+  - [X] The **`NutritionFeed.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-feed`
-    - [ ] It should receive **at least** the following props:
-      - [ ] `nutritions` - an array of `nutrition` items
-    - [ ] If the `nutritions` array has no items in it, it should render an empty message that says `Nothing here yet` inside an element with the `className` of `empty-message`
-    - [ ] If the `nutritions` array does have items in it:
-      - [ ] For each item in the `nutritions` array, it should render a `NutritionCard.jsx` component
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-feed`
+    - [X] It should receive **at least** the following props:
+      - [X] `nutritions` - an array of `nutrition` items
+    - [X] If the `nutritions` array has no items in it, it should render an empty message that says `Nothing here yet` inside an element with the `className` of `empty-message`
+    - [X] If the `nutritions` array does have items in it:
+      - [X] For each item in the `nutritions` array, it should render a `NutritionCard.jsx` component
 
-  - [ ] The **`NutritionNew.jsx`** component:
+  - [X] The **`NutritionNew.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-new`
-    - [ ] Should render the `NutritionForm.jsx` component and pass it the appropriate props
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-new`
+    - [X] Should render the `NutritionForm.jsx` component and pass it the appropriate props
 
   - [ ] The **`NutritionForm.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-form`
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-form`
     - [ ] Should render an input element for the following fields:
-      - [ ] `name` - name of the nutrition item (defaults to an empty string)
-      - [ ] `calories` - number of calories in the nutrition item (defaults to 1)
-      - [ ] `imageUrl` - the `url` of an image to show for this nutrition item (defaults to an empty string)
-      - [ ] `category` - the category that this nutrition item belongs to, like fruit, meat, soda, snack, nuts, etc. (defaults to an empty string)
-    - [ ] Each `input` element in the form should have a `className` of `form-input` and should have the following props set:
-      - [ ] `name` - the `name` of the `input` field being rendered (`name`, `calories`, `imageUrl`, `category`)
-      - [ ] `type` - the type of the `input` element (`text`, `email`, `number`, etc)
-      - [ ] `value` - the current value of the `input` element
-      - [ ] `onChange` - the `onChange` handler function
+      - [X] `name` - name of the nutrition item (defaults to an empty string)
+      - [X] `calories` - number of calories in the nutrition item (defaults to 1)
+      - [X] `imageUrl` - the `url` of an image to show for this nutrition item (defaults to an empty string)
+      - [X] `category` - the category that this nutrition item belongs to, like fruit, meat, soda, snack, nuts, etc. (defaults to an empty string)
+    - [X] Each `input` element in the form should have a `className` of `form-input` and should have the following props set:
+      - [X] `name` - the `name` of the `input` field being rendered (`name`, `calories`, `imageUrl`, `category`)
+      - [X] `type` - the type of the `input` element (`text`, `email`, `number`, etc)
+      - [X] `value` - the current value of the `input` element
+      - [X] `onChange` - the `onChange` handler function
     - [ ] The component should gracefully handle errors:
       - [ ] If any of the required fields are left blank, there should be an error message inside of an element with the `className` of `error` indicating which fields are required.
       - [ ] If the user has attempted to create a nutrition entry and gotten a `400` or `422` error, then that message should be displayed inside an element with the `className` of `error`
     - [ ] There should be a `button` element with the `className` of `submit-nutrition`:
-      - [ ] It should contain the text `"Save"`
+      - [X] It should contain the text `"Save"`
       - [ ] When clicked, it should call a function that creates a new nutrition entry
     - [ ] After the form has been succesfully submitted:
       - [ ] Ensure that the new nutrition entry is stored in the `nutrition` context's `nutritions` array and is displayed in the `NutritionFeed.jsx` component
@@ -622,8 +622,8 @@ Here are the pieces of functionality that should be built out for the backend:
         - [X] A `GET` request to the `/me` endpoint
           - [ ] It should send a JSON response back to the client with the user info like so: `{ "user": { "email": "user@gmail.com", ... } }`
         - [X] A `POST` request to the `/login` endpoint
-          - [ ] It should accept a request body with `email` and `password` keys
-          - [ ] It should send a JSON response back to the client with a new JWT and user info like so: `{ "token": "e2c2...", "user": { "email": "user@gmail.com", ... } }`
+          - [X] It should accept a request body with `email` and `password` keys
+          - [X] It should send a JSON response back to the client with a new JWT and user info like so: `{ "token": "e2c2...", "user": { "email": "user@gmail.com", ... } }`
         - [X] A `POST` request to the `/register` endpoint
           - [X] It should accept a request body with `email`, `username`, `firstName`, `lastName`, and `password` keys
           - [ ] It should send a JSON response back to the client with a `201` status code, along with a new JWT and user info like so: `{ "token": "e2c2...", "user": { "email": "user@gmail.com", ... } }`
@@ -656,17 +656,17 @@ Here are the pieces of functionality that should be built out for the backend:
 - **Resources and Permissions**
   - [ ] Next, implement the functionality to allow users to save instances of things they've drank/eaten, so that they can track their own nutrition data! Also make sure users can only access the data that they themselves have created. No other user should be able to see any data owned by another user!
   - [ ] The **Nutrition** model
-    - [ ] In the `models` directory, create two new files: `models/nutrition.js` and `models/nutrition.test.js`
-      - [ ] The `Nutrition` model should have **at least** the following static methods:
-        - [ ] `createNutrition`
-          - [ ] Should insert a new nutrition instance into the database when values are supplied for all of the required fields: `"name"`, `"category"`, `"calories"`, and `"image_url"`. The `quantity` field should default to `1`.
-          - [ ] The new nutrition instance should have its `user_id` field set to the `id` of the authenticated user
-          - [ ] Should throw a `BadRequestError` (`400` status code) or `UnprocessableEntityError` (`422` status code) when any of those values are not supplied.
-        - [ ] `fetchNutritionById`
-          - [ ] When supplied with a valid `id`, fetches the a nutrition instance from the database that matches that `id`.
-          - [ ] If no nutrition instance matches that `id`, throws a `NotFoundError` (`404` status code)
-        - [ ] `listNutritionForUser`
-          - [ ] Should list all nutrition instances in the database that are owned by a particular user
+    - [X] In the `models` directory, create two new files: `models/nutrition.js` and `models/nutrition.test.js`
+      - [X] The `Nutrition` model should have **at least** the following static methods:
+        - [X] `createNutrition`
+          - [X] Should insert a new nutrition instance into the database when values are supplied for all of the required fields: `"name"`, `"category"`, `"calories"`, and `"image_url"`. The `quantity` field should default to `1`.
+          - [X] The new nutrition instance should have its `user_id` field set to the `id` of the authenticated user
+          - [X] Should throw a `BadRequestError` (`400` status code) or `UnprocessableEntityError` (`422` status code) when any of those values are not supplied.
+        - [X] `fetchNutritionById`
+          - [X] When supplied with a valid `id`, fetches the a nutrition instance from the database that matches that `id`.
+          - [X] If no nutrition instance matches that `id`, throws a `NotFoundError` (`404` status code)
+        - [X] `listNutritionForUser`
+          - [X] Should list all nutrition instances in the database that are owned by a particular user
     - [ ] In the `models/nutrition.test.js` file:
       - [ ] Test the `createNutrition` method. Write test cases for:
         - [ ] A user can create a nutrition instance when they supply the appropriate values
@@ -703,15 +703,15 @@ Here are the pieces of functionality that should be built out for the backend:
       - [ ] Implement the features outlined in the tests until they're all passing
     - [ ] Commit all work to `git`
   - [ ] The **/nutrition** routes
-    - [ ] In the `routes` directory, create two new files: `routes/nutrition.js` and `routes/nutrition.test.js`
-      - [ ] A new Express router should be created that will be mounted at the `/nutrition` endpoint. It should handle:
-        - [ ] `GET` requests to the `/` endpoint
-          - [ ] It should send a JSON response back to the client with all of the user-owned nutrition instances in an array like so: `{ "nutritions": [...] }`
-        - [ ] `POST` requests to the `/` endpoint
-          - [ ] It should accept a request body with one `nutrition` key containing an object with all the attributes of the `nutrition` entry
-          - [ ] It should send a JSON response back to the client with a `201` status code, and the newly created nutrition instance like so: `{ "nutrition": { ... } }`
-        - [ ] `GET` requests to the `/:nutritionId` endpoint
-          - [ ] It should send a JSON response back to the client with the nutrition instance that matches the `:nutritionId` parameter like so: `{ "nutrition": { ... } }`
+    - [X] In the `routes` directory, create two new files: `routes/nutrition.js` and `routes/nutrition.test.js`
+      - [X] A new Express router should be created that will be mounted at the `/nutrition` endpoint. It should handle:
+        - [X] `GET` requests to the `/` endpoint
+          - [X] It should send a JSON response back to the client with all of the user-owned nutrition instances in an array like so: `{ "nutritions": [...] }`
+        - [X] `POST` requests to the `/` endpoint
+          - [X] It should accept a request body with one `nutrition` key containing an object with all the attributes of the `nutrition` entry
+          - [X] It should send a JSON response back to the client with a `201` status code, and the newly created nutrition instance like so: `{ "nutrition": { ... } }`
+        - [X] `GET` requests to the `/:nutritionId` endpoint
+          - [X] It should send a JSON response back to the client with the nutrition instance that matches the `:nutritionId` parameter like so: `{ "nutrition": { ... } }`
     - [ ] In the `routes/nutrition.test.js` file:
       - [ ] Test the `GET /nutrition` endpoint
         - [ ] Write test cases for:

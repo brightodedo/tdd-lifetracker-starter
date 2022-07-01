@@ -88,3 +88,12 @@
 .signin{
     text-align: center;
 }
+
+.tops{
+    text-align: center;
+}
+
+.tops h1{
+    margin: 0px auto
+    ;
+}

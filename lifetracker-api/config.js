@@ -14,7 +14,8 @@ function getDatabaseUri(){
     return process.env.DATABASE_URL || `postgresql://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}`
 }
 
-const BCRYPT_WORK_FACTOR = 5
+const BCRYPT_WORK_FACTOR = process.env.BCRYPT_WORK_FACTOR || 7
+const SECRET_KEY = process.env.SECRET_KEY
 
 console.log("Connected to lifetracker:" .red)
 console.log("PORT:" .blue, PORT)
@@ -25,4 +26,5 @@ module.exports = {
     PORT,
     BCRYPT_WORK_FACTOR,
     getDatabaseUri,
+    SECRET_KEY,
 }
