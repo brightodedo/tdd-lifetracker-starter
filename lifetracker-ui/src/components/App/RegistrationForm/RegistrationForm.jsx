@@ -3,6 +3,7 @@ import * as React from 'react'
 import { Link, useNavigate} from 'react-router-dom'
 import './RegistrationForm.css'
 import { useAuthContext } from '../../../../contexts/auth'
+import ApiClient from '../../../directory/apiClient'
 
 
 export default function RegistrationForm(){
@@ -75,30 +76,15 @@ export default function RegistrationForm(){
             return
         }
         
-        try{
-            const result = await axios.post('http://localhost:3001/auth/register',{
-                "username" : registerForm.username,
-	            "password" : registerForm.password,
-                "first_name" : registerForm.first_name,
-                "last_name" : registerForm.last_name,
-                "email"  :  registerForm.email
-            })
-            
-            if(result?.data?.user){
-                setRegisterLoading(false)
-                setUser(result.data)
-                navigate("/activity")
-            }
-            else{
-                setRegisterError({...registerError, "register" : err?.response?.data?.error?.message})
-                setRegisterLoading(false)
-            }
+        const {data, error} = await ApiClient.signupUser(registerForm)
+        if(error) setRegisterError({...registerError, "register" : error?.response?.data?.error?.message})
+        if(data?.user){
+            setUser(data.user)
+            ApiClient.setToken(data.token)
         }
-        catch(err){
-            console.log(err?.response?.data?.error?.message)
-            setRegisterLoading(false)
-            setRegisterError({...registerError, "register" : err?.response?.data?.error?.message})
-        }
+
+        setRegisterLoading(false)
+
     }
 
     return(

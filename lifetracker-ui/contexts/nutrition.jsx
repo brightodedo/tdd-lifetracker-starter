@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { useAuthContext } from './auth'
 import axios from 'axios'
-
+import ApiClient from '../src/directory/apiClient'
 
 const NutritionContext = React.createContext(null)
 
-export const NutritionContextProvider = ({children}) => {
+export const NutritionContextProvider =  ({children}) => {
     const [nutritions, setNutritions] = React.useState([])
     const [initialized, setInitialized] = React.useState([])
     const [isLoading, setIsLoading] = React.useState(false)
@@ -16,18 +16,11 @@ export const NutritionContextProvider = ({children}) => {
     React.useEffect(async () => {
         if(user){
             setIsLoading(true)
-            await axios.get('http://localhost:3001/nutrition')
-            .then((response) => {
-                setNutritions(response.data)
-            })
-            .catch((err) => {
-                console.log(err)
-                setError(err)
-            })
-            .then(() => {
-                setIsLoading(false)
-                setInitialized(true)
-            })
+            const {data, error} = await ApiClient.nutrition()
+            if(error) setError(error)
+            if(data) setNutritions(data.nutritions)
+            setIsLoading(false)
+            setInitialized(true)
         }
     },[user])
 

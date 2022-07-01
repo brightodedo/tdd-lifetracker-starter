@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import './LoginForm.css'
-import axios from 'axios'
+import ApiClient from '../../../directory/apiClient'
 import { useAuthContext } from '../../../../contexts/auth'
 
 export default function LoginForm(){
@@ -42,24 +42,16 @@ export default function LoginForm(){
             return
         }
 
-        try{
-            const result = await axios.post('http://localhost:3001/auth/login',
-            loginForm)
+        const {data, error}  = await ApiClient.loginUser(loginForm)
+        if(error) setLoginError(error)
+        if(data?.user) {
+            setUser(data.user)
+            ApiClient.setToken(data.token)
+        }
 
-            if (result?.data?.user) {
-                setUser(result.data.user)
-                setLoginLoading(false)
-                navigate("/activity")
-              } else {
-                setLoginError("Something wrong with login")
-                setLoginLoading(false)
-              }
-        }
-        catch(err){
-            setLoginLoading(false)
-            console.log(err)
-            setLoginError(err?.response?.data?.error?.message)
-        }
+        setLoginLoading(false)
+
+
     }
     
     return(

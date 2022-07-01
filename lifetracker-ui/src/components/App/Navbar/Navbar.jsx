@@ -11,7 +11,7 @@ export default function Navbar(){
         "link-nutrition" : "inactive",
         "link-exercise" : "inactive",
         "link-sleep" : "inactive",
-        "link-login" : "active",
+        "link-login" : "inactive",
         "link-register" : "inactive",
     })
 
@@ -28,7 +28,6 @@ export default function Navbar(){
         "link-register" : "inactive",
         [att] : "active"
         })
-        console.log(navs)
     }
 
     return(

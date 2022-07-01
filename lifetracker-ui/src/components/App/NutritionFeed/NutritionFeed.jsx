@@ -12,7 +12,7 @@ export default function NutritionFeed(){
             {nutritions.length == 0 ? <h1 className='empty-message'> Nothing here yet </h1>
             : nutritions.map((nutrition, idx) => {
                 return <NutritionCard key={idx} nutrition={nutrition}/>
-            })}
+            })} 
         </div>
     )
 }
