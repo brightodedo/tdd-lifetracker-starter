@@ -8,8 +8,6 @@ const router = express.Router()
 router.get('/me', security.requireAuthenticatedUser, async (req, res, next) => {
     try{
         const {email} = res.locals.user
-        console.log(email)
-        console.log(res.locals)
         const user = await User.fetchUserByEmail(email)
         return res.status(200).json({user})
     }
@@ -22,7 +20,7 @@ router.post('/login', async (req, res, next) => {
     try{
     const user = await User.login(req.body)
     const token = createUserJwt(user)
-    res.status(200).json({user, token})
+    res.status(200).json({user,token})
     }
     catch(err){
         next(err)

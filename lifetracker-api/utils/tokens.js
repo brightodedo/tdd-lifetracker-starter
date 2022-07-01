@@ -8,7 +8,8 @@ const generateToken = (data) =>
 const createUserJwt = (user) => {
     const payload = {
         email : user.email,
-        username : user.username
+        username : user.username,
+        user_id : user.id
     }
 
     return generateToken(payload)

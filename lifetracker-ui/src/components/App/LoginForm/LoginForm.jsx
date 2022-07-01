@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import './LoginForm.css'
 import axios from 'axios'
+import { useAuthContext } from '../../../../contexts/auth'
 
-
-export default function LoginForm({setAppState}){
+export default function LoginForm(){
+    const {setUser} = useAuthContext()
     const navigate = useNavigate()
     const [loginForm, setLoginForm] = React.useState({email : "", password : ""})
     const [loginLoading, setLoginLoading] = React.useState(false)
@@ -46,7 +47,7 @@ export default function LoginForm({setAppState}){
             loginForm)
 
             if (result?.data?.user) {
-                setAppState(result.data.user)
+                setUser(result.data.user)
                 setLoginLoading(false)
                 navigate("/activity")
               } else {

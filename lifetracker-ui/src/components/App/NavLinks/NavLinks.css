@@ -1,0 +1,7 @@
+.inactive a{
+    color: aliceblue;
+}
+
+.active a{
+    color: orange;
+}

@@ -2,9 +2,11 @@ import axios from 'axios'
 import * as React from 'react'
 import { Link, useNavigate} from 'react-router-dom'
 import './RegistrationForm.css'
+import { useAuthContext } from '../../../../contexts/auth'
 
 
-export default function RegistrationForm({setAppState}){
+export default function RegistrationForm(){
+    const {setUser} = useAuthContext()
     const navigate = useNavigate()
     const [registerForm, setRegisterForm] = React.useState({email : "", 
                                                             username: "",
@@ -84,7 +86,7 @@ export default function RegistrationForm({setAppState}){
             
             if(result?.data?.user){
                 setRegisterLoading(false)
-                setAppState(result.data)
+                setUser(result.data)
                 navigate("/activity")
             }
             else{

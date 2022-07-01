@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom'
 import imgSrc from '../../../assets/Logo.svg'
 
 
-export default function Logo(){
+export default function Logo({handleNavlinksOnClick}){
     return(
         <div className='logo'>
-            <Link to='/'><img src={imgSrc} alt="" /></Link>
+            <div onClick={handleNavlinksOnClick}>
+                <Link to='/'><img src={imgSrc} alt="" /></Link>
+            </div>
         </div>
     )
 }

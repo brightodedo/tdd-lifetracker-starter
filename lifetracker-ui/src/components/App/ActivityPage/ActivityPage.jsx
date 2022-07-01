@@ -2,15 +2,17 @@ import * as React from 'react'
 import { useNavigate } from 'react-router-dom'
 import ActivityFeed from '../ActivityFeed/ActivityFeed'
 import './ActivityPage.css'
+import { useAuthContext } from '../../../../contexts/auth'
 
 
-export default function ActivityPage({appState}){
+export default function ActivityPage(){
+    const {user} = useAuthContext()
     const navigate = useNavigate()
     React.useEffect(() => {
-        if(!appState){
+        if(!user){
             navigate("/login")
         }
-    }, [appState]) 
+    }, [user]) 
 
     return(
         <div className="activity-page">

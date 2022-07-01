@@ -4,7 +4,7 @@ import * as React from 'react'
 const AuthContext = React.createContext(null)
 
 export const AuthContextProvider = ({children}) => {
-    const [user, setUser] = React.useState({})
+    const [user, setUser] = React.useState(null)
 
     const authValue = {user, setUser}
 
@@ -14,3 +14,5 @@ export const AuthContextProvider = ({children}) => {
         </AuthContext.Provider>
     )
 }
+
+export const useAuthContext = () => React.useContext(AuthContext)

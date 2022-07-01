@@ -10,11 +10,11 @@ CREATE TABLE IF NOT EXISTS users(
 );
 
 CREATE TABLE IF NOT EXISTS nutrition(
-    id SERIAL INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     category TEXT NOT NULL,
     calories INTEGER NOT NULL,
     image_url TEXT NOT NULL,
     user_id INTEGER REFERENCES users(id) ,
     created_at TIMESTAMP NOT NULL DEFAULT NOW() 
-)
+);

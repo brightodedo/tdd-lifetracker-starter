@@ -2,19 +2,21 @@ import * as React from 'react'
 import { useNavigate } from 'react-router-dom'
 import LoginForm from '../LoginForm/LoginForm'
 import './LoginPage.css'
+import { useAuthContext } from '../../../../contexts/auth'
 
 
-export default function LoginPage({setAppState, appState}){
+export default function LoginPage(){
+    const {user} = useAuthContext()
     const navigate = useNavigate()
     React.useEffect(() => {
-        if(appState){
+        if(user){
             navigate("/activity")
         }
-    }, [appState]) 
+    }, [user]) 
 
     return(
         <div className="login-page">
-            <LoginForm setAppState={setAppState}/>
+            <LoginForm />
         </div>
     )
 }
