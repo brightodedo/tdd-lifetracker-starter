@@ -4,6 +4,7 @@
 
 > Data is the new oil - Clive Humbly
 
+
 Everywhere around us is data waiting to be collected and utilized. In recent years we've seen the rise of applications and services that exist to quantify concepts that were previously hard to capture. FitBit, Apple Health, and Woop are all $1 billion dollar services to offer tracking statistics about how we live our lives. The LifeTracker app you'll be building will do exactly that - track your life by quantifying your activity.
 
 This application will be built using the battle-tested PERN stack - PostgreSQL, Express, React, and Node.
@@ -805,3 +806,27 @@ Here are the pieces of functionality that should be built out for the backend:
 ## Wrapping Up and Resources
 
 This is a huge project and represents a complete application with user-owned resources. Accordingly, it can, should, and will test the limits of your capabilities. Do your best and don't be afraid to Google! Especially in regards to any SQL that might be tricky.
+
+
+Walkthrough Video
+TODO:// Add the embedded URL code to your animated app walkthrough below, ADD_EMBEDDED_CODE_HERE. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
+
+![project3](https://user-images.githubusercontent.com/54002497/176974650-e1f19dcc-bd22-4e0e-9d8d-c17ffcc4e0ee.gif)
+
+Reflection
+Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
+- Yes the topics we covered in the labs such as postgres, SQL, security, and the walkthroughs prepared me for this.
+
+If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
+- If I had more time I would work more on the CSS for my code.
+
+
+Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
+- Would like to try implementing a better CSS with better gifs.
+
+Open-source libraries used
+Add any links to open-source libraries used in your project.
+Shout out
+Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+
+- Shout Out to TA Roy, TA Rebecca, Duy Nguyen and all the interns in codpath. Seeing everyone's project is very inspirational and motivational in moving forward.
