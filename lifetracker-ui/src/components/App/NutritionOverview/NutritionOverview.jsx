@@ -11,7 +11,6 @@ export default function NutritionOverview(){
         initialized, setInitialized,
         isLoading, setIsLoading,
         error, setError} = useNutritionContext()
-
     return(
         <div className="nutrition-overview">
             <div className="overview-header">

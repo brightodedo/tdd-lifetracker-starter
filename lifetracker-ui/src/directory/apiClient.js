@@ -27,7 +27,8 @@ class ApiClient{
         }
         catch(error){
             console.error({errorResponse : error.response})
-            const message = error?.repsonse?.data?.error?.message
+            console.log(error?.response?.data?.error?.message)
+            const message = error?.response?.data?.error?.message
             return {data : null, error : message || String(error)}
         }
     }
@@ -48,6 +49,11 @@ class ApiClient{
         return await this.request({endpoint: `nutrition`,
         method : `GET`, data : {}
         })
+    }
+
+    async createNutrition(credentials){
+        return await this.request({endpoint: `nutrition`,
+    method : `POST`, data : credentials})
     }
 }
 

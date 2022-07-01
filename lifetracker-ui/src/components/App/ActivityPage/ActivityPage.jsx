@@ -6,10 +6,11 @@ import { useAuthContext } from '../../../../contexts/auth'
 
 
 export default function ActivityPage(){
-    const {user} = useAuthContext()
+    const {user, handleNavlinksOnClick} = useAuthContext()
     const navigate = useNavigate()
     React.useEffect(() => {
         if(!user){
+            handleNavlinksOnClick("link-login")
             navigate("/login")
         }
     }, [user]) 

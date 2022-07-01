@@ -2,7 +2,7 @@ const db = require('../db');
 const {UnauthorizedError, BadRequestError, NotFoundError} = require('../utils/errors')
 class Nutrition{
     static async createNutrition(credentials, user_id){
-        const requiredFields = ["name", "category", "calories", "image_url", "quantity"]
+        const requiredFields = ["name", "category", "calories", "imageUrl"]
 
         requiredFields.forEach(field => {
             if(!credentials.hasOwnProperty(field)){
@@ -29,7 +29,7 @@ class Nutrition{
             $5
         ) 
         RETURNING name, category, calories, image_url;
-        `, [credentials.name, credentials.category, credentials.calories, credentials.image_url, user_id])
+        `, [credentials.name, credentials.category, credentials.calories, credentials.imageUrl, user_id])
 
     return result.rows[0]
     }

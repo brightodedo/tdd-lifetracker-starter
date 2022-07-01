@@ -77,7 +77,7 @@ export default function RegistrationForm(){
         }
         
         const {data, error} = await ApiClient.signupUser(registerForm)
-        if(error) setRegisterError({...registerError, "register" : error?.response?.data?.error?.message})
+        if(error) setRegisterError({...registerError, "register" : error})
         if(data?.user){
             setUser(data.user)
             ApiClient.setToken(data.token)

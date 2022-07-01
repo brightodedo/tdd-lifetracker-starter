@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
+const security = require('../middleware/security')
 const Nutrition  = require('../models/nutrition')
 
-router.get('/', async (req,res, next) => {
+router.get('/', security.requireAuthenticatedUser, async (req,res, next) => {
     try{
         const {user_id} = res.locals.user
         const nutritions = await Nutrition.listNutritionForUser(user_id)
