@@ -118,7 +118,7 @@ The components in the `App.jsx` file should render the following components (alo
       - [X] `/activity` - Should render the `ActivityPage.jsx` component (only if the user is logged in, otherwise it renders the `AccessForbidden.jsx` component)
       - [X] `/nutrition/* - should render the `NutritionPage.jsx`component (only if the user is logged in, otherwise it renders the`AccessForbidden.jsx` component)
       - [X] `*` - anything else should render the `NotFound` component
-  - [ ] To standarize API requests throughout the application, set up an **`ApiClient`** class
+  - [X] To standarize API requests throughout the application, set up an **`ApiClient`** class
 
     - [ ] Start by creating a `constants.js` file at the root of the project
       - [ ] In it, export a few variables:
@@ -386,14 +386,14 @@ The components in the `App.jsx` file should render the following components (alo
       - [X] `type` - the type of the `input` element (`text`, `email`, `number`, etc)
       - [X] `value` - the current value of the `input` element
       - [X] `onChange` - the `onChange` handler function
-    - [ ] The component should gracefully handle errors:
-      - [ ] If any of the required fields are left blank, there should be an error message inside of an element with the `className` of `error` indicating which fields are required.
-      - [ ] If the user has attempted to create a nutrition entry and gotten a `400` or `422` error, then that message should be displayed inside an element with the `className` of `error`
-    - [ ] There should be a `button` element with the `className` of `submit-nutrition`:
+    - [X] The component should gracefully handle errors:
+      - [X] If any of the required fields are left blank, there should be an error message inside of an element with the `className` of `error` indicating which fields are required.
+      - [X] If the user has attempted to create a nutrition entry and gotten a `400` or `422` error, then that message should be displayed inside an element with the `className` of `error`
+    - [X] There should be a `button` element with the `className` of `submit-nutrition`:
       - [X] It should contain the text `"Save"`
-      - [ ] When clicked, it should call a function that creates a new nutrition entry
-    - [ ] After the form has been succesfully submitted:
-      - [ ] Ensure that the new nutrition entry is stored in the `nutrition` context's `nutritions` array and is displayed in the `NutritionFeed.jsx` component
+      - [X] When clicked, it should call a function that creates a new nutrition entry
+    - [X] After the form has been succesfully submitted:
+      - [X] Ensure that the new nutrition entry is stored in the `nutrition` context's `nutritions` array and is displayed in the `NutritionFeed.jsx` component
       - [ ] Refetch the `activity` data so that new summary stats will be calculated
 
   - [ ] The **`NutritionDetail.jsx`** component:
@@ -407,21 +407,21 @@ The components in the `App.jsx` file should render the following components (alo
       - [ ] It should store the `nutrition` received by the request in state and then render a `NutritionCard.jsx` component for that nutrition.
       - [ ] If no `nutrition` is found with that `id`, it should render the `NotFound.jsx` component
 
-  - [ ] The **`NutritionCard.jsx`** component:
+  - [X] The **`NutritionCard.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-card`
-    - [ ] Should accept **at least** the following props:
-      - [ ] `nutrition` - should be a nutrition entry object containing the following attributes:
-        - [ ] `imageUrl` - (not required)
-        - [ ] `name` - (required)
-        - [ ] `calories` - (required)
-        - [ ] `category` - (required)
-        - [ ] `createdAt` - (required)
-    - [ ] It should render the `name` of the `nutrition` entry inside an element with the `className` of `nutrition-name`
-    - [ ] If the `nutrition` entry has a valid `imageUrl` attribute, it should render an `img` element with the `className` of `nutrition-image` and use that `imageUrl` as its `src`
-    - [ ] It should render the `calories` attribute of the `nutrition` entry inside an element with the `className` of `nutrition-calories`
-    - [ ] It should render the `category` attribute of the `nutrition` entry inside an element with the `className` of `nutrition-category`
-    - [ ] It should render the `createdAt` attribute of the `nutrition` entry in the format `dd/mm/yyyy` - example: `07/02/2022` - inside an element with the `className` of `nutrition-date`.
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-card`
+    - [X] Should accept **at least** the following props:
+      - [X] `nutrition` - should be a nutrition entry object containing the following attributes:
+        - [X] `imageUrl` - (not required)
+        - [X] `name` - (required)
+        - [X] `calories` - (required)
+        - [X] `category` - (required)
+        - [X] `createdAt` - (required)
+    - [X] It should render the `name` of the `nutrition` entry inside an element with the `className` of `nutrition-name`
+    - [X] If the `nutrition` entry has a valid `imageUrl` attribute, it should render an `img` element with the `className` of `nutrition-image` and use that `imageUrl` as its `src`
+    - [X] It should render the `calories` attribute of the `nutrition` entry inside an element with the `className` of `nutrition-calories`
+    - [X] It should render the `category` attribute of the `nutrition` entry inside an element with the `className` of `nutrition-category`
+    - [X] It should render the `createdAt` attribute of the `nutrition` entry in the format `dd/mm/yyyy` - example: `07/02/2022` - inside an element with the `className` of `nutrition-date`.
 
   - [ ] DO THE SAME FOR ANY OTHER RESOURCE THAT IS IN THE APPLICATION
 
@@ -809,7 +809,7 @@ This is a huge project and represents a complete application with user-owned res
 
 
 Walkthrough Video
-TODO:// Add the embedded URL code to your animated app walkthrough below, ADD_EMBEDDED_CODE_HERE. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
+
 
 ![project3](https://user-images.githubusercontent.com/54002497/176974650-e1f19dcc-bd22-4e0e-9d8d-c17ffcc4e0ee.gif)
 

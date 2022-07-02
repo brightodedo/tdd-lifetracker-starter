@@ -32,7 +32,6 @@ export default function NutritionForm(){
             setIsLoading(false)
             return
         }
-
         if(nutritionForm.category == ""){
             setNutritionError("Please select a category")
             setIsLoading(false)
@@ -77,21 +76,21 @@ export default function NutritionForm(){
                     {nutritionError ? <p className='error'>{nutritionError}</p> : <></>}
                 </div>
                 <div className="card">
-                    <div className="nutrition-name">
+                    <div className="nutritionform-name">
                         <label htmlFor="name">Name</label>
-                        <input type="text" name="name" className='form-input' value={nutritionForm.name} onChange={handleNutritionOnChange}/>
+                        <input type="text" name="name" className='form-input' value={nutritionForm.name} onChange={handleNutritionOnChange} placeholder="Garri"/>
                     </div>
-                    <div className="nutrition-category">
+                    <div className="nutritionform-name">
                         <label htmlFor="category">category</label>
-                        <input type="text" name="category" className='form-input' value={nutritionForm.category} onChange={handleNutritionOnChange}/>
+                        <input type="text" name="category" className='form-input' value={nutritionForm.category} onChange={handleNutritionOnChange} placeholder="Swallow"/>
                     </div>
-                    <div className="nutrition-calories">
+                    <div className="nutritionform-name">
                         <label htmlFor="calories">Calories</label>
-                        <input type="number" name="calories" min="1" step="10" max="3500" className='form-input' value={nutritionForm.calories} onChange={handleNutritionOnChange}/>
+                        <input type="number" name="calories" min="1" step="10" max="3500" className='form-input' value={nutritionForm.calories} onChange={handleNutritionOnChange} placeholder="1000"/>
                     </div>
-                    <div className="nutrition-img">
+                    <div className="nutritionform-name">
                         <label htmlFor="imageUrl">Image URL</label>
-                        <input type="text" name="imageUrl" className='form-input' value={nutritionForm.imageUrl} onChange={handleNutritionOnChange}/>
+                        <input type="text" name="imageUrl" className='form-input' value={nutritionForm.imageUrl} onChange={handleNutritionOnChange} placeholder="garri.webp"/>
                     </div>
                     <div className="submit-nutrition">
                         <button onClick={handleNutritionOnSubmit}>save</button>

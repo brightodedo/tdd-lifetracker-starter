@@ -1,0 +1,9 @@
+.nutrition-feed{
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+    grid-gap: 10px;
+    gap: 10px
+}

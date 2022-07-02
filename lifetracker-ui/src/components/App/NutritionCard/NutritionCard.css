@@ -1,0 +1,75 @@
+.nutrition-card{
+    min-width: 340px;
+    max-width: 340px;
+    min-height: 150px;
+    background-color: orange;
+    outline:  double aliceblue;
+    margin-bottom: 25px;
+    padding: 5px;
+}
+.nutrition-card .card-top img {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+}
+
+.card-top{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+
+}
+
+.card-top p{
+    font-size: 22px;
+    font-weight: bolder;
+    max-height: 60px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.card-middle{
+    display: flex;
+    flex: 1;
+    text-align: center;
+    font-style: normal;
+    font-size: 22px;
+    justify-content: space-evenly;
+}
+.card-middle h6{
+    text-align: center;
+    font-size: 22px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.card-middle p{
+    text-align: center;
+    font-size: 22px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: bolder;
+}
+.card-bottom{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nutrition-category {
+    text-align: center;
+    border: 1px solid aliceblue;
+    border-radius: 7px;
+    padding: 7px;
+    max-height: 87%;
+    min-width: 70px;
+}
+
+.nutrition-date{
+    text-align: center;
+    padding: 7px;
+}
+
+.nutrition-date p{
+    text-align: center;
+    font-weight: bolder;
+}

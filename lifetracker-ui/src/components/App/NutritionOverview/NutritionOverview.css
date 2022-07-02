@@ -1,11 +1,11 @@
 .nutrition-overview{
     width: 100%;
+    margin: 20px;
 }
 
 .overview-header{
     display: flex;
     flex: row;
-    margin: 20px;
     justify-content: space-between;
 }
 
@@ -15,21 +15,29 @@
 .overview-button{
     display: flex;
     justify-content: center;
+    margin-top: auto;
+    margin-bottom: auto;
 }
+    
+
 .overview-button button{
     margin: auto;
-    color: orange;
-    background-color: transparent;
+    background-color: orange;
+    color: aliceblue;
     outline: none;
-    border: 1px solid orange;
+    border: none;
+    border-radius: 20px;
     transition: .3s;
+    height: 40px;
 }
 
 .overview-button button:hover{
     transform: scale(1.1) translateY(-7px);
-    color: green;
-    background-color: transparent;
-    outline: none;
-    border: 1px solid green;
     cursor: pointer;
+    box-shadow: 0px 0px 10px grey;
+    background-color: green;
+    color: aliceblue;
+    outline: none;
+    border: none;
+    border-radius: 20px;
 }
