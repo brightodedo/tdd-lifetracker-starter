@@ -2,6 +2,7 @@
     color: aliceblue;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .not-found h1{
@@ -11,4 +12,16 @@
 
 .not-found h3{
     text-align: center;
+}
+.not-found{
+    z-index: 10;
+}
+.backy-img{
+    position: relative;
+}
+
+.notfound img{
+    position: absolute;
+    width: 50%;
+    opacity: 40%;
 }
