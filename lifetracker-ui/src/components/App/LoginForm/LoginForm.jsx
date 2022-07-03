@@ -1,13 +1,11 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
 import './LoginForm.css'
 import ApiClient from '../../../directory/apiClient'
 import { useAuthContext } from '../../../../contexts/auth'
 
 export default function LoginForm(){
-    const {setUser} = useAuthContext()
-    const navigate = useNavigate()
+    const {setUser, setIsProcessing, isProcessing} = useAuthContext()
     const [loginForm, setLoginForm] = React.useState({email : "", password : ""})
     const [loginLoading, setLoginLoading] = React.useState(false)
     const [loginError, setLoginError] = React.useState()
@@ -73,8 +71,8 @@ export default function LoginForm(){
                         <input type="password" className="form-input" name='password'value={loginForm.password} onChange={handleOnChange} placeholder="Password"/>
                     </div>
                 
-                    <div className="register-btn">
-                        <button className='signin' onClick={handleLoginOnSubmit}> Login </button>
+                    <div className={`register-btn${loginLoading ? `s` : ``}`}>
+                        <button className='signin' onClick={handleLoginOnSubmit}>{loginLoading ? "Loading..." : "Login"} </button>
                     </div>
                 </div> 
                 <div className="redirect">

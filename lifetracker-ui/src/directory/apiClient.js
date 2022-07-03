@@ -4,12 +4,17 @@ class ApiClient{
     constructor(remoteHostUrl){
         this.remoteHostUrl = remoteHostUrl
         this.token = null
+        this.tokenName = "lifetracker_token"
     }   
 
     setToken(token){
         this.token=token
+        localStorage.setItem(this.tokenName, token)
     }
 
+    async fetchUserFromToken(){
+        return await this.request({endpoint :`auth/me` , method : `GET`})
+    }
     async request({endpoint, method =  `GET`, data={}}){
         const url = `${this.remoteHostUrl}/${endpoint}`
 
@@ -54,6 +59,11 @@ class ApiClient{
     async createNutrition(credentials){
         return await this.request({endpoint: `nutrition`,
     method : `POST`, data : credentials})
+    }
+
+    async logoutUser(){
+        this.setToken(null)
+        localStorage.setItem(this.tokenName, "")
     }
 }
 

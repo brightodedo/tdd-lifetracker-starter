@@ -38,8 +38,15 @@ export const AuthContextProvider = ({children}) => {
         }
     }
 
-    const authValue = {user, setUser, navs, handleNavlinksOnClick}
+    const [initialized, setInitialized] = React.useState(false)
+    const [isProcessing , setIsProcessing] = React.useState(false)
+    const [error, setError] = React.useState("")
+    const authValue = {user, setUser, navs, handleNavlinksOnClick, error, setError, setIsProcessing, isProcessing}
 
+
+    React.useEffect(() => {
+
+    })
     return(
         <AuthContext.Provider value={authValue}>
             <>{children}</>

@@ -6,7 +6,7 @@ import ApiClient from '../../../directory/apiClient'
 
 
 export default function NutritionFeed(){
-    const {nutritions, setNutritions, setInitialized, setIsLoading} = useNutritionContext()
+    const {nutritions, setNutritions, setInitialized, setIsLoading, setError} = useNutritionContext()
 
     React.useEffect( async() => {
         const {data, error} = await ApiClient.nutrition()

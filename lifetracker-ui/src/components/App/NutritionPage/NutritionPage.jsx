@@ -6,6 +6,7 @@ import NutritionDetail from '../NutritionDetail/NutritionDetail'
 import NutritionNew from '../NutritionNew/NutritionNew'
 import NutritionOverview from '../NutritionOverview/NutritionOverview'
 import { useAuthContext } from '../../../../contexts/auth'
+import ApiClient from '../../../directory/apiClient'
 import './NutritionPage.css'
 
 export default function(){
@@ -17,14 +18,14 @@ export default function(){
 }
 
 function NutritionPage(){
-    const {nutritions, setNutritions, isLoading} = useNutritionContext()
+    const {nutritions, setNutritions, isLoading, setInitialized, setIsLoading, setError} = useNutritionContext()
     const {user, handleNavlinksOnClick} = useAuthContext()
     const navigate = useNavigate()
     React.useEffect(async() => {
         if(!user){
             handleNavlinksOnClick("link-login")
             navigate("/login")
-        }
+        }   
     }, [user, nutritions, setNutritions, isLoading ]) 
 
     return(

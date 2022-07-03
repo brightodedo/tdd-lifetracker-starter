@@ -3,7 +3,6 @@ import './NutritionCard.css'
 
 
 export default function NutritionCard({nutrition}){
-    console.log(nutrition)
     const date = nutrition.created_at.split("T")[0].split("-")
     return(
         <div className="nutrition-card">

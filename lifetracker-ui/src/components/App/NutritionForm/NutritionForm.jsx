@@ -2,12 +2,12 @@ import * as React from 'react'
 import './NutritionForm.css'
 import ApiClient from '../../../directory/apiClient'
 import { useNavigate } from 'react-router-dom'
-import { NutritionContextProvider, useNutritionContext } from '../../../../contexts/nutrition'
+import { useNutritionContext } from '../../../../contexts/nutrition'
 
 
 export default function NutritionForm(){
     const navigate = useNavigate()
-    const {setIsLoading} = useNutritionContext()
+    const {setIsLoading, isLoading} = useNutritionContext()
     const [nutritionForm, setNutritionForm] = React.useState({
                                                             name : "",
                                                             category : "",
@@ -21,8 +21,6 @@ export default function NutritionForm(){
         const value = event.target.value
 
         setNutritionForm({...nutritionForm, [field] : value})
-
-        console.log(nutritionForm)
     } 
 
     const handleNutritionOnSubmit = async() => {
@@ -93,7 +91,7 @@ export default function NutritionForm(){
                         <input type="text" name="imageUrl" className='form-input' value={nutritionForm.imageUrl} onChange={handleNutritionOnChange} placeholder="garri.webp"/>
                     </div>
                     <div className="submit-nutrition">
-                        <button onClick={handleNutritionOnSubmit}>save</button>
+                        <button onClick={handleNutritionOnSubmit}>{isLoading ? "saving" : "save" }</button>
                     </div>
                 </div>
             </div>

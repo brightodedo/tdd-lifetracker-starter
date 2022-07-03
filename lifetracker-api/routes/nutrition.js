@@ -15,7 +15,7 @@ router.get('/', security.requireAuthenticatedUser, async (req,res, next) => {
     }
 })
 
-router.post('/', async (req, res, next) => {
+router.post('/', security.requireAuthenticatedUser, async (req, res, next) => {
     try{
         const {user_id} = res.locals.user
         const nutrition = await Nutrition.createNutrition(req.body, user_id)

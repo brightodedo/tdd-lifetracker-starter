@@ -48,6 +48,29 @@
     background-color: green;
 }
 
+.register-btns button{
+    background-color: green;
+    border: 1px solid aliceblue;
+    border-radius: 25px;
+    color: aliceblue;
+    cursor: pointer;
+    outline: none;
+    height: 25px;
+    width: 65%;
+    transition: .3s;
+    font-weight: bolder;
+}
+
+.register-btns button:hover{
+    box-shadow: 0px 0px 15px grey;
+    transform: scale(1.2) translateY(-10px);
+}
+
+.register-btns button:active{
+    transition: .001s;
+    background-color: green;
+}
+
 .restore{
     color: orange;
     text-decoration: none;
@@ -56,4 +79,9 @@
 .restore:hover{
     color: green;
     text-decoration: none;
+}
+
+.register-btns {
+    display: flex;
+    justify-content: center;
 }

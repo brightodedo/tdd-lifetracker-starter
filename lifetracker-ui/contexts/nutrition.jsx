@@ -15,10 +15,10 @@ export const NutritionContextProvider =  ({children}) => {
 
     React.useEffect(async () => {
         if(user){
-            setIsLoading(true)
-            const {data, error} = await ApiClient.nutrition()
-            if(error) setError(error)
-            if(data) setNutritions(data.nutritions)
+            // setIsLoading(true)
+            // const {data, error} = await ApiClient.nutrition()
+            // if(error) setError(error)
+            // if(data) setNutritions(data.nutritions)
             setIsLoading(false)
             setInitialized(true)
         }

@@ -8,6 +8,7 @@ import RegistrationPage from "./RegistrationPage/RegistrationPage"
 import ActivityPage from "./ActivityPage/ActivityPage"
 import NutritionPage from "./NutritionPage/NutritionPage"
 import NotFound from "./NotFound/NotFound"
+import ApiClient from '../../directory/apiClient'
 import {AuthContextProvider ,useAuthContext} from '../../../contexts/auth'
 
 export default function AppContainer(){
@@ -19,11 +20,25 @@ export default function AppContainer(){
 }
 
 function App() {
-  const {user, setUser} = useAuthContext()
-  console.log("Delete the line above this")
+  const {user, setUser, setError, setIsProcessing, isProcessing} = useAuthContext()
+  console.log("Delete the line under this")
   console.log(user)
-  const [appState, setAppState] = React.useState(null)
 
+  React.useEffect(() => {
+    setIsProcessing(true)
+    const fetchUser = async () => {
+      const {data, error} = await ApiClient.fetchUserFromToken()
+      if(data) setUser(data.user)
+      if(error) setError(error)
+    }
+
+    const token = localStorage.getItem("lifetracker_token")
+    if(token){
+      ApiClient.setToken(token)
+      fetchUser()
+    }
+    setIsProcessing(false)
+  }, [])
   return (
     <div className="app">
       <React.Fragment>
