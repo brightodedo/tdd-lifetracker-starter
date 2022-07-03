@@ -67,5 +67,6 @@ class ApiClient{
     }
 }
 
+const {REACT_APP_REMOTE_HOST_URL} =process.env
 //http://localhost:3001
-export default new ApiClient(`${process.env.REACT_APP_REMOTE_HOST_URL}`)
+export default new ApiClient(`${REACT_APP_REMOTE_HOST_URL}`)
