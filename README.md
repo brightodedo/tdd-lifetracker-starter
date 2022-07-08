@@ -37,8 +37,7 @@ Implement any of the following features to improve the application:
 
 ### Walkthrough Video
 
-![project3](https://user-images.githubusercontent.com/54002497/177391137-48e30fee-570e-45a0-8c73-c58658228979.gif)
-
+![giphy 7 27 12 PM](https://user-images.githubusercontent.com/54002497/178081752-45a51118-ccba-47ac-b2bc-6f9503dad501.gif)
 
 ### Reflection
 
