@@ -12,12 +12,36 @@ export default function SleepCard({sleep}){
         var [year, month, day]  = (fullDate.split("-"))
         month = parseInt(month)
         day = parseInt(day) 
-        const rday = day % 10
-
-        console.log(year,monthToMon[month],day, rday)
-        return month
+        var rday = day % 10
+        if(rday > 3){
+            rday = dayToDay[3]
+        }
+        else{
+            rday = dayToDay[rday-1]
+        }
+        return `${monthToMon[month]} ${day}${rday}, ${year}`
     }
 
+    const timeToCardFormat = (time) =>{
+        const mytime = time.split(".")[0]
+        
+        var [hour, min, sec] = mytime.split(":") 
+        var amPm = "AM";
+        if(parseInt(hour)  > 12){
+            hour = parseInt(hour) - 12
+            amPm = "PM"
+        }
+        return `${hour}:${min} ${amPm}`
+    }
+
+    const intervalToCardFormat = ({day_interval}) => {
+        var keys = Object.keys(day_interval)
+        var result = ''
+        keys.map((key) => {
+            result = result + `${day_interval[key]} ${key} `
+        })
+        return result
+    }
     return(
         <div className="sleep-card">
             <div className="card-top">
@@ -26,16 +50,16 @@ export default function SleepCard({sleep}){
             <div className="card-middle">
                 <div className="card-middle-omega">
                     <h6 className='sleep-duration'>Start Time</h6>
-                    <p>PlaceHOlder</p>
+                    <p>{timeToCardFormat(sleep.start_time)}</p>
                 </div>
                 <div className="card-middle-beta">
                     <h6 className='sleep-intensity'> End Time </h6>
-                    <p>{ sleep.end_time}</p>
+                    <p>{timeToCardFormat(sleep.end_time)}</p>
                 </div>
             </div>
             <div className="card-bottom">
                 <div className="sleep-date">
-                    <p>num_of_hours{moment(new Date(sleep.end_date)).calendar()}</p>
+                    <p>{intervalToCardFormat(sleep)}</p>
                 </div>
             </div>
 

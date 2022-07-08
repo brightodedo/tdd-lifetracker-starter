@@ -24,8 +24,7 @@ export default function SleepOverview(){
                 <Link to='/sleep/create'><button>Record Sleep</button></Link>
             </div>
         </div>
-        {error ? <p className="error">{error}</p> :
-        isLoading ? <Loading /> :
+        {isLoading ? <Loading /> :
         <SleepFeed />
         }
     </div>
