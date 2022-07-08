@@ -29,7 +29,7 @@ class Exercise{
             $5
         ) 
         RETURNING name, category, intensity, duration;
-        `, [credentials.name.trim(), credentials.category.trim(), credentials.intensity, credentials.duration, user_id])
+        `, [credentials.name.trim().toLowerCase(), credentials.category.trim().toLowerCase(), credentials.intensity, credentials.duration, user_id])
 
     return result.rows[0]
     }

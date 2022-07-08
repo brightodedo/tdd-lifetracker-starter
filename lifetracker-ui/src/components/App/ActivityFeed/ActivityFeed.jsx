@@ -27,7 +27,6 @@ export default function ActivityFeed(){
                 setAvgSleepHours(fem)
             }
             if(data?.summary?.totalsleephours?.sum){
-                console.log("was here")
                 const doug = await dateToHours(data?.summary?.totalsleephours?.sum)
                 settotalSleepHours(doug)
             }
@@ -40,7 +39,6 @@ export default function ActivityFeed(){
         }
         var hours = 0 
         const key = Object.keys(day)
-        console.log(key)
         key.map(period => {
             if(period == 'days'){
                 hours += (day[period] * 24)
@@ -55,7 +53,6 @@ export default function ActivityFeed(){
                 hours += (day[period] / 3600)
             }
         })
-        console.log(hours)
         return hours.toFixed(2)
     }
     

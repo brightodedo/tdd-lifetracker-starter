@@ -49,11 +49,9 @@
 
 .below-banner{
     color: aliceblue;
-}
-.below-banner{
     width: 100%;
     display: flex;
-    margin: 20px;
+    margin: 30px;
     flex-direction: column;
 }
 .first-banner{

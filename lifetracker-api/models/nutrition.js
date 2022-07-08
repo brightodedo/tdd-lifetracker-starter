@@ -29,7 +29,7 @@ class Nutrition{
             $5
         ) 
         RETURNING name, category, calories, image_url;
-        `, [credentials.name.trim(), credentials.category.trim(), credentials.calories, credentials.imageUrl, user_id])
+        `, [credentials.name.trim().toLowerCase(), credentials.category.trim().toLowerCase(), credentials.calories, credentials.imageUrl, user_id])
 
     return result.rows[0]
     }
