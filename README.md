@@ -1,10 +1,8 @@
-📝 `NOTE` Use this template to initialize the contents of a README.md file for your application. As you work on your assignment over the course of the week, update the required or stretch features lists to indicate which features you have completed by changing `[ ]` to `[x]`. (🚫 Remove this paragraph before submitting your assignment.)
-
 # Week 3 Assignment: Life Tracker
 
 Submitted by: Nnaemeka Odedo
 
-Deployed Application: [Lifetracker Deployed Site](ADD_LINK_HERE)
+Deployed Application: [Lifetracker Deployed Site]("http://equal-stem.surge.sh/")
 
 ## Application Features
 
@@ -26,7 +24,7 @@ Deployed Application: [Lifetracker Deployed Site](ADD_LINK_HERE)
 **Detailed Activity Page:**
 - [X] The detailed activity page should display a feed of all previous tracked activities.
 - [X] The detailed activity should contain a form to contain relevant information. (i.e if tracking nutrition this form allows the user to capture calories, timestamp, image, category, etc.) 
-- [X] The activity tracked should be given a unique id for easy lookup.
+- [ ] The activity tracked should be given a unique id for easy lookup.
   `TODO://` Add link to table schema in the link code below. Your file should end in `.sql` and show your schema for the detailed activities table. (🚫 Remove this paragraph after adding schema link)
   * [Table Schema](📝ADD LINK TO TABLE SCHEMA.sql HERE!) 
 
@@ -64,3 +62,5 @@ Implement any of the following features to improve the application:
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
 
 - Shout Out to TA Roy, TA Rebecca, Duy Nguyen and all the interns in codpath. Seeing everyone's project is very inspirational and motivational in moving forward.
+
+- Shout out to Falone and Aileen for help with the deployment
