@@ -40,7 +40,8 @@ Implement any of the following features to improve the application:
 
 ### Walkthrough Video
 
-![project3](https://user-images.githubusercontent.com/54002497/176974650-e1f19dcc-bd22-4e0e-9d8d-c17ffcc4e0ee.gif)
+![project3](https://user-images.githubusercontent.com/54002497/177391137-48e30fee-570e-45a0-8c73-c58658228979.gif)
+
 
 ### Reflection
 
