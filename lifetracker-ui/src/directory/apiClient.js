@@ -82,10 +82,16 @@ class ApiClient{
     method : `POST`, data : credentials})
     }
 
+    async activity(){
+        return await this.request({endpoint: `activity`,
+    method : `GET`, data : {}})
+    }
+
     async logoutUser(){
         this.setToken(null)
         localStorage.setItem(this.tokenName, "")
     }
+
 }
 
 //http://localhost:3001

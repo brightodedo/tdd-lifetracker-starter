@@ -6,6 +6,7 @@ const authRouter = require('./routes/auth')
 const nutritionRouter = require('./routes/nutrition')
 const exerciseRouter = require('./routes/exercise')
 const sleepRouter = require('./routes/sleep')
+const activityRouter = require('./routes/activity')
 const security = require('./middleware/security')
 const {NotFoundError} = require('./utils/errors')
 
@@ -23,6 +24,7 @@ app.use('/auth', authRouter)
 app.use('/nutrition', nutritionRouter)
 app.use('/exercise', exerciseRouter)
 app.use('/sleep', sleepRouter)
+app.use('/activity', activityRouter)
 
 //health check route 
 app.get('/', (req, res) => {

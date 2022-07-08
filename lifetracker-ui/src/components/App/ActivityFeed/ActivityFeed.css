@@ -23,13 +23,17 @@
     flex: 1;
     margin: 25px 0px;
 }
+.randy a{
+    height: 100%;
+}
 
-.randy button{
+.randy a button{
     background-color: orange;
     color: aliceblue;
     outline: none;
     border: none;
     border-radius: 12px;
+    height: 100%;
 }
 
 .randy button:hover{

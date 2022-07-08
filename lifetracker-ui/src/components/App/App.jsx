@@ -23,8 +23,6 @@ export default function AppContainer(){
 
 function App() {
   const {user, setUser, setError, setIsProcessing, isProcessing} = useAuthContext()
-  console.log("Delete the line under this")
-  console.log(user)
 
   React.useEffect(() => {
     setIsProcessing(true)

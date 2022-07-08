@@ -2,7 +2,7 @@
     min-width: 340px;
     max-width: 340px;
     min-height: 150px;
-    background-color: orange;
+    background-image: linear-gradient(335deg, red, 55%, rgb(165, 42, 159));
     outline:  double aliceblue;
     margin-bottom: 25px;
     padding: 5px;

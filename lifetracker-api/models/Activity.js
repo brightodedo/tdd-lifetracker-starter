@@ -27,4 +27,92 @@ class Activity{
         HAVING user_id=8;
         `)
     }
+
+    static async totalExerciseMinutes(user_id){
+        if(!user_id){
+            throw new BadRequestError("User Id is missing")
+        }
+
+        const result = await db.query(`
+        SELECT SUM(duration)
+        FROM exercise 
+        WHERE user_id=$1;
+        `, [user_id])
+
+        return result.rows[0]
+    }
+
+    static async averageSleepHours(user_id){
+        if(!user_id){
+            throw new BadRequestError("User Id is missing")
+        }
+
+        const result = await db.query(`
+        SELECT AVG(end_time-start_time) 
+        FROM sleep 
+        WHERE user_id=$1;
+        `, [user_id])
+
+        return result.rows[0]
+    }
+
+    static async averageDailyCalories(user_id){
+        if(!user_id){
+            throw new BadRequestError("User Id is missing")
+        }
+
+        const result = await db.query(`
+        SELECT AVG(camp) 
+        FROM (
+            SELECT SUM(calories) as camp 
+            FROM nutrition 
+            WHERE user_id=$1 
+            GROUP BY created_at::DATE) x;
+        `, [user_id])
+
+        return result.rows[0]
+    }
+
+    static async averageExerciseIntensity(user_id){
+        if(!user_id){
+            throw new BadRequestError("User Id is missing")
+        }
+
+        const result = await db.query(`
+        SELECT AVG(intensity) 
+        FROM exercise 
+        WHERE user_id =$1
+        `, [user_id])
+
+        return result.rows[0]
+    }
+
+    static async totalSleepHours(user_id){
+        if(!user_id){
+            throw new BadRequestError("User Id is missing")
+        }
+
+        const result = await db.query(`
+        SELECT sum(end_time-start_time)
+        FROM sleep 
+        WHERE user_id=$1;
+        `, [user_id])
+
+        return result.rows[0]
+    }
+
+    static async callMe(user_id){
+
+        const result = {
+            totalexemin : await this.totalExerciseMinutes(user_id),
+            avgsleehours : await this.averageSleepHours(user_id),
+            avgdaily : await this.averageDailyCalories(user_id),
+            avgexeintens : await this.averageExerciseIntensity(user_id),
+            totalsleephours : await this.totalSleepHours(user_id)
+        }
+
+        return result
+    }
 }
+
+module.exports = Activity

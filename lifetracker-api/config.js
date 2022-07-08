@@ -15,7 +15,7 @@ function getDatabaseUri(){
 }
 
 const BCRYPT_WORK_FACTOR = process.env.BCRYPT_WORK_FACTOR || 7
-const SECRET_KEY = process.env.SECRET_KEY
+const SECRET_KEY = process.env.SECRET_KEY || "SECRET_KEY"
 
 console.log("Connected to lifetracker:" .red)
 console.log("PORT:" .blue, PORT)

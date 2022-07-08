@@ -86,7 +86,7 @@ export default function ExerciseForm(){
         <div className="exercise-form">
             <div className="exerci-redner">
                 <div className="tops">
-                    <h1 className='record-exercise'>Record Nutrition</h1>
+                    <h1 className='record-exercise'>Record Exercise</h1>
                     {error ? <p className='error'>{error}</p> : <></>}
                 </div>
                 <div className="card">

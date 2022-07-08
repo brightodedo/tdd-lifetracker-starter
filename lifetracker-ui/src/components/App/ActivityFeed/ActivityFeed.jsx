@@ -1,8 +1,64 @@
 import * as React from 'react'
 import './ActivityFeed.css'
+import { Link } from 'react-router-dom'
+import ApiClient from '../../../directory/apiClient'
+import { useAuthContext } from '../../../../contexts/auth'
 
 
-export default function ActivityFeed({totalCaloriesPerDay, avgCaloriesPerCategory}){
+
+export default function ActivityFeed(){
+    const [lerror, setLerror] = React.useState(null)
+    const [summary, setSummary] = React.useState({})
+    const [avgsleephours, setAvgSleepHours] = React.useState(0)
+    const [totalsleephours, settotalSleepHours] = React.useState(0)
+
+    const {handleNavlinksOnClick} = useAuthContext()
+
+    React.useEffect(async () => {
+        const {data, error} = await ApiClient.activity()
+        if(error){
+            setLerror(error)
+            return
+        }
+        if(data){
+             setSummary(data.summary)
+             if(data?.summary?.avgsleehours?.avg){
+                const fem = await dateToHours(data?.summary?.avgsleehours?.avg)
+                setAvgSleepHours(fem)
+            }
+            if(data?.summary?.totalsleephours?.sum){
+                console.log("was here")
+                const doug = await dateToHours(data?.summary?.totalsleephours?.sum)
+                settotalSleepHours(doug)
+            }
+        }
+    }, [])
+
+    const dateToHours = async (day) => {
+        if (!day){
+            return 0
+        }
+        var hours = 0 
+        const key = Object.keys(day)
+        console.log(key)
+        key.map(period => {
+            if(period == 'days'){
+                hours += (day[period] * 24)
+            }
+            if(period == 'hours'){
+                hours += day[period]
+            }
+            if(period == 'minutes'){
+                hours += (day[period] / 60)
+            }
+            if(period == 'seconds'){
+                hours += (day[period] / 3600)
+            }
+        })
+        console.log(hours)
+        return hours.toFixed(2)
+    }
+    
     return(
         <div className="activity-feed">
             <div className="working-area">
@@ -10,11 +66,12 @@ export default function ActivityFeed({totalCaloriesPerDay, avgCaloriesPerCategor
                     <h1>Activity Feed</h1>
                 </div>
                 <div className="randy">
-                    <button>Add Exercise</button>
-                    <button>Log Sleep</button>
-                    <button> Record Nutrition </button>
+                    <Link to='/exercise/create'><button onClick={() => {handleNavlinksOnClick('link-exercise')}}>Add Exercise</button></Link>
+                    <Link to='/sleep/create'><button onClick={() => {handleNavlinksOnClick('link-sleep')}}>Log Sleep</button></Link>
+                    <Link to='/nutrition/create'><button onClick={() => {handleNavlinksOnClick('link-nutrition')}}> Record Nutrition </button></Link>
                 </div>
             </div>
+            {lerror ? <p className="error">{lerror}</p> : <></>}
             <div className="below-banner">
                     <div className="first-banner">
                         <div className="total-exercise">
@@ -22,7 +79,7 @@ export default function ActivityFeed({totalCaloriesPerDay, avgCaloriesPerCategor
                                 <h4>Total Exercise Minutes</h4>
                             </div>
                             <div className="bottom-word">
-                                <p>4</p>
+                                <p>{summary?.totalexemin?.sum  ? summary.totalexemin.sum : 0}</p>
                             </div>
                         </div>
                         <div className="avg-sleep">
@@ -30,15 +87,15 @@ export default function ActivityFeed({totalCaloriesPerDay, avgCaloriesPerCategor
                                 <h4>Avg Sleep Hours</h4>
                                 </div>
                                 <div className="bottom-word">
-                                    <p>98.03</p>
+                                    <p>{avgsleephours }</p>
                                 </div>
                             </div>
                         <div className="avg-calories">
                             <div className="top-word">
-                                <h4>Avg Sleep Hours</h4>
+                                <h4>Avg Daily Calories</h4>
                             </div>
                             <div className="bottom-word">
-                                <p>98.03</p>
+                                <p>{summary?.avgdaily?.avg ? Number(summary.avgdaily.avg).toFixed(2) : 0}</p>
                             </div>
                         </div>
                     </div>
@@ -59,15 +116,15 @@ export default function ActivityFeed({totalCaloriesPerDay, avgCaloriesPerCategor
                                 <h4>Avg Exercise Intensity</h4>
                             </div>
                             <div className="bottom-word">
-                                <p>0</p>
+                                <p>{summary?.avgexeintens?.avg ? Number(summary.avgexeintens.avg).toFixed(2) : 0}</p>
                             </div>
                         </div>
                         <div className="total-sleep">
                             <div className="top-word">
-                                <h4>Avg Exercise Intensity</h4>
+                                <h4>Total hours Slept</h4>
                             </div>
                            <div className="bottom-word">
-                                <p>0</p>
+                                <p>{totalsleephours}</p>
                             </div>
                         </div>
                     </div>
