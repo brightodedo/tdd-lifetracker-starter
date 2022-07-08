@@ -1,9 +1,9 @@
 import * as React from 'react'
 import './NutritionCard.css'
+import moment from 'moment'
 
 
 export default function NutritionCard({nutrition}){
-    const date = nutrition.created_at.split("T")[0].split("-")
     return(
         <div className="nutrition-card">
             <div className="card-top">
@@ -16,7 +16,7 @@ export default function NutritionCard({nutrition}){
             </div>
             <div className="card-bottom">
                 <div className="nutrition-date">
-                    <p>{`${date[2]}/${date[1]}/${date[0]}`}</p>
+                    <p>{moment(new Date(nutrition.created_at)).calendar()}</p>
                 </div>
                 <div className="nutrition-category">
                     <p>{nutrition.category}</p>

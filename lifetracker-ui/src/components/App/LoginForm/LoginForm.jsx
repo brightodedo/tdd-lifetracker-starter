@@ -5,7 +5,7 @@ import ApiClient from '../../../directory/apiClient'
 import { useAuthContext } from '../../../../contexts/auth'
 
 export default function LoginForm(){
-    const {setUser, setIsProcessing, isProcessing} = useAuthContext()
+    const {setUser, setIsProcessing, isProcessing, handleNavlinksOnClick} = useAuthContext()
     const [loginForm, setLoginForm] = React.useState({email : "", password : ""})
     const [loginLoading, setLoginLoading] = React.useState(false)
     const [loginError, setLoginError] = React.useState()
@@ -76,7 +76,7 @@ export default function LoginForm(){
                     </div>
                 </div> 
                 <div className="redirect">
-                    <p className="signin">Don't have an account? <Link to='/register' className='restore'>SignUp</Link> </p>
+                    <p className="signin">Don't have an account? <Link to='/register' className='restore' onClick={() => {handleNavlinksOnClick('link-register')}} >SignUp</Link> </p>
                 </div>
             </div>
         </div>

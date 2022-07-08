@@ -7,7 +7,7 @@ import ApiClient from '../../../directory/apiClient'
 
 
 export default function RegistrationForm(){
-    const {setUser} = useAuthContext()
+    const {setUser, handleNavlinksOnClick} = useAuthContext()
     const navigate = useNavigate()
     const [registerForm, setRegisterForm] = React.useState({email : "", 
                                                             username: "",
@@ -128,7 +128,7 @@ export default function RegistrationForm(){
                     </div>
                 </div>
                 <div className="redirect">
-                    <p className='signin'> Have An Account? <Link to='/login' className='restore'>Login</Link></p>
+                    <p className='signin'> Have An Account? <Link to='/login' className='restore' onClick={() => {handleNavlinksOnClick('link-login')}}>Login</Link></p>
                 </div>
             </div>
         </div>

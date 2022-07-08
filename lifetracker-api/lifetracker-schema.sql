@@ -18,3 +18,21 @@ CREATE TABLE IF NOT EXISTS nutrition(
     user_id INTEGER REFERENCES users(id) ,
     created_at TIMESTAMP NOT NULL DEFAULT NOW() 
 );
+
+CREATE TABLE IF NOT EXISTS exercise(
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    category TEXT NOT NULL,
+    intensity INTEGER NOT NULL,
+    duration INTEGER NOT NULL,
+    user_id INTEGER REFERENCES users(id) ,
+    created_at TIMESTAMP NOT NULL DEFAULT NOW() 
+);
+
+CREATE TABLE IF NOT EXISTS sleep(
+    id SERIAL PRIMARY KEY,
+    start_time TIMESTAMP NOT NULL UNIQUE,
+    end_time TIMESTAMP NOT NULL UNIQUE,
+    user_id INTEGER REFERENCES users(id) ,
+    created_at TIMESTAMP NOT NULL DEFAULT NOW() 
+);

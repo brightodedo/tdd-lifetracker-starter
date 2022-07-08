@@ -26,7 +26,7 @@ function NutritionPage(){
             handleNavlinksOnClick("link-login")
             navigate("/login")
         }   
-    }, [user, nutritions, setNutritions, isLoading ]) 
+    }, [user]) 
 
     return(
         <div className="nutrition-page">
@@ -36,7 +36,7 @@ function NutritionPage(){
             <Routes>
                 <Route path='/' element={<NutritionOverview />}></Route>
                 <Route path='/create' element={<NutritionNew />}></Route>
-                <Route path='/id:nutritionId' element={<NutritionDetail />}></Route>
+                <Route path='/:nutritionId' element={<NutritionDetail />}></Route>
                 <Route path='/*' element={<NotFound />}></Route>
             </Routes>
         </div>

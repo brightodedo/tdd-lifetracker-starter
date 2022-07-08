@@ -4,6 +4,8 @@ const cors = require('cors')
 const morgan = require('morgan')
 const authRouter = require('./routes/auth')
 const nutritionRouter = require('./routes/nutrition')
+const exerciseRouter = require('./routes/exercise')
+const sleepRouter = require('./routes/sleep')
 const security = require('./middleware/security')
 const {NotFoundError} = require('./utils/errors')
 
@@ -19,6 +21,8 @@ app.use(security.extractUserFromJwt)
 //mount the routers
 app.use('/auth', authRouter)
 app.use('/nutrition', nutritionRouter)
+app.use('/exercise', exerciseRouter)
+app.use('/sleep', sleepRouter)
 
 //health check route 
 app.get('/', (req, res) => {

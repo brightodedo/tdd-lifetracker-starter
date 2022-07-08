@@ -32,7 +32,6 @@ class ApiClient{
         }
         catch(error){
             console.error({errorResponse : error.response})
-            console.log(error?.response?.data?.error?.message)
             const message = error?.response?.data?.error?.message
             return {data : null, error : message || String(error)}
         }
@@ -58,6 +57,28 @@ class ApiClient{
 
     async createNutrition(credentials){
         return await this.request({endpoint: `nutrition`,
+    method : `POST`, data : credentials})
+    }
+
+    async exercise(){
+        return await this.request({endpoint: `exercise`,
+        method : `GET`, data : {}
+        })
+    }
+
+    async createExercise(credentials){
+        return await this.request({endpoint: `exercise`,
+    method : `POST`, data : credentials})
+    }
+
+    async sleep(){
+        return await this.request({endpoint: `sleep`,
+        method : `GET`, data : {}
+        })
+    }
+
+    async createSleep(credentials){
+        return await this.request({endpoint: `sleep`,
     method : `POST`, data : credentials})
     }
 

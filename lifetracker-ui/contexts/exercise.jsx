@@ -1,10 +1,10 @@
 import * as React from 'react'
 import { useAuthContext } from './auth'
 
-const NutritionContext = React.createContext(null)
+const ExerciseContext = React.createContext(null)
 
-export const NutritionContextProvider =  ({children}) => {
-    const [nutritions, setNutritions] = React.useState([])
+export const ExerciseContextProvider = ({children}) => {
+    const [exercises, setExercises] = React.useState([])
     const [initialized, setInitialized] = React.useState([])
     const [isLoading, setIsLoading] = React.useState(false)
     const [error, setError] = React.useState(null)
@@ -16,19 +16,18 @@ export const NutritionContextProvider =  ({children}) => {
             setIsLoading(false)
             setInitialized(true)
         }
-    },[user])
+    }, [user])
 
-    const nutritionValue = {nutritions, setNutritions,
+    const exerciseValue = {exercises, setExercises,
         initialized, setInitialized,
         isLoading, setIsLoading,
         error, setError}
 
     return (
-        <NutritionContext.Provider value={nutritionValue}>
+        <ExerciseContext.Provider value={exerciseValue}>
             <>{children}</>
-        </NutritionContext.Provider>
+        </ExerciseContext.Provider>
     )
-
 }
 
-export const useNutritionContext = () => React.useContext(NutritionContext)
+export const useExcerciseContext = () => React.useContext(ExerciseContext)

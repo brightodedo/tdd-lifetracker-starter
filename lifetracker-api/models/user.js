@@ -37,7 +37,7 @@ class User{
                 }
             }
         }
-        //if password is correct
+        //if password is Incorrect
         throw new UnauthorizedError(`Email or Password Invalid`)
         
     }

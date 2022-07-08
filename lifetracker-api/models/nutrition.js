@@ -29,7 +29,7 @@ class Nutrition{
             $5
         ) 
         RETURNING name, category, calories, image_url;
-        `, [credentials.name, credentials.category, credentials.calories, credentials.imageUrl, user_id])
+        `, [credentials.name.trim(), credentials.category.trim(), credentials.calories, credentials.imageUrl, user_id])
 
     return result.rows[0]
     }
@@ -45,15 +45,16 @@ class Nutrition{
         image_url,
         user_id,
         created_at
-        FROM nutrition;
-        `)
+        FROM nutrition
+        WHERE id= $1;
+        `, [nutrition_id])
 
         if(!result) throw new NotFoundError(`No nutrition found with id: ${nutrition_id}`)
         return result.rows[0]
     }
     static async listNutritionForUser(user_id ){
         if(!user_id)
-        throw new BadRequestError("User_id field missing in listNutritionForUser")
+        throw new BadRequestError("User Id field missing in listNutritionForUser")
 
         const result = await db.query(`
         SELECT * 

@@ -1,0 +1,25 @@
+.exercise-page{
+    margin-top: 15px;
+    height: 630px;
+    width: 100%;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.exercise-header{
+    width: 100%;
+    height: 117.5px;
+    display: flex;
+    justify-content: center;
+    background-color: orange;
+    
+}
+
+.exercise-header p{
+    margin: 0px;
+    font-size: 100px;
+    font-weight: bolder;
+}

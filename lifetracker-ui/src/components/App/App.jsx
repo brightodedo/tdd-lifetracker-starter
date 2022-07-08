@@ -7,7 +7,9 @@ import LoginPage from "./LoginPage/LoginPage"
 import RegistrationPage from "./RegistrationPage/RegistrationPage"
 import ActivityPage from "./ActivityPage/ActivityPage"
 import NutritionPage from "./NutritionPage/NutritionPage"
+import ExercisePage from "./ExercisePage/ExercisePage"
 import NotFound from "./NotFound/NotFound"
+import SleepPage from "./SleepPage/SleepPage"
 import ApiClient from '../../directory/apiClient'
 import {AuthContextProvider ,useAuthContext} from '../../../contexts/auth'
 
@@ -51,6 +53,8 @@ function App() {
             <Route path='/activity' element={<ActivityPage />} />  
             {/* AccessForbidden component with conditional statement */}
             <Route path='/nutrition/*' element={<NutritionPage />}/>
+            <Route path='/exercise/*' element={<ExercisePage />}/>
+            <Route path='/sleep/*' element={<SleepPage />}/>
             <Route path='*' element={<NotFound />}/>
           </Routes>
         </BrowserRouter>

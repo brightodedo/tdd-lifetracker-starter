@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     min-width: 85%;
+    flex-direction: column;
 }
 .working-area{
     display: flex;
@@ -40,4 +41,98 @@
     outline: none;
     border: none;
     border-radius: 12px;
+}
+
+.below-banner{
+    color: aliceblue;
+}
+.below-banner{
+    width: 100%;
+    display: flex;
+    margin: 20px;
+    flex-direction: column;
+}
+.first-banner{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: 15px;
+    justify-content: space-around;
+}
+
+.avg-sleep{
+    background-image: linear-gradient(45deg, purple, 75%, blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px;
+    border: 2px solid orange;
+    border-radius: 5px;
+}
+.avg-calories{
+    background-image: linear-gradient(45deg,purple, 75%, blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px;
+    border: 2px solid orange;
+    border-radius: 5px;
+}
+.total-exercise{
+    background-image: linear-gradient(45deg, purple, 75%, blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px;
+    border: 2px solid orange;
+    border-radius: 5px;
+}
+.max-cal{
+    background-image: linear-gradient(45deg, purple, 75%, blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px;
+    border: 2px solid orange;
+    border-radius: 5px;
+}
+.avg-exercise{
+    background-image: linear-gradient(45deg, purple, 75%, blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px;
+    border: 2px solid orange;
+    border-radius: 5px;
+}
+
+.total-sleep{
+    background-image: linear-gradient(45deg, purple, 75%, blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px;
+    border: 2px solid orange;
+    border-radius: 5px;
+}
+
+.second-banner{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: 15px;
+    justify-content: space-around;
+}
+
+.second-label{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 60px;
+}
+.bottom-word p{
+    font-size: 33px;
+    font-weight: bolder;
+    margin: 0px 0px;
 }

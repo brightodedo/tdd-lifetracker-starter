@@ -13,7 +13,7 @@ const jwtFrom = ({headers}) => {
     return undefined
 }
 
-//attach the use res object 
+//verifies the user {whether good or bad} and attaches the return object after verification to the res.locals.user object
 const extractUserFromJwt = (req, res, next) => {
     try{
         const token = jwtFrom(req)
@@ -23,6 +23,11 @@ const extractUserFromJwt = (req, res, next) => {
         return next()
     }
     catch(err){
+        if(err instanceof jwt.TokenExpiredError) {
+            if(req?.headers?.authorization) {
+                return next()
+            }
+        }
         return next(err)
     }
 }
@@ -45,4 +50,5 @@ const requireAuthenticatedUser = (req, res, next) => {
 module.exports = {
     requireAuthenticatedUser,
     extractUserFromJwt,
+    jwtFrom,
 }
